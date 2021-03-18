@@ -6,11 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Intro to JavaScript</title>
   </head>
+  <style>
+    .greetings {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: red;
+      height: 50px;
+      width: 150px;
+      border-radius: 24px;
+      color: wheat;
+      cursor: pointer;
+    }
+    .hi-bye {
+      display: flex;
+      background: green;
+      margin-top: 20px;
+      height: 100px;
+      width: 100px;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em;
+      color: honeydew;
+      border-radius: 50%;
+    }
+  </style>
   <body>
     <!-- this is conditional test with comparison operators see line 111 -->
     <section>
       <button>Turn On</button>
       <p>This is currently off</p>
+    </section>
+
+    <!-- see line 161 for concatenating  -->
+    <section>
+      <div class="greetings">Click This</div>
+    </section>
+
+    <!-- see line 217 for template literals  -->
+    <section>
+      <div class="hi-bye">Hi</div>
     </section>
     <!--
    Variables: a name used to store  data. we first declare the 
@@ -45,6 +80,9 @@ console.log() good way to debugg and test code
       var ourPlanet = "Earth";
 
       var currentVisitors = 20;
+
+      /* Working with numbers */
+
       /* useful number methods*/
 
       /* two decimal places */
@@ -64,13 +102,13 @@ console.log() good way to debugg and test code
 
       /* Some Airthmetic operators
 
-      +  addition 10 + 10
-      - subtraction 4 - 5
-      / division 8 / 20
-      * multiplication 20 * 10
-      % remainder 60 % 3
-      ** exponent 5 ** 3
-      */
+            +  addition 10 + 10
+            - subtraction 4 - 5
+            / division 8 / 20
+            * multiplication 20 * 10
+            % remainder 60 % 3
+            ** exponent 5 ** 3
+            */
       let numFive = 5;
 
       let numSix = 6;
@@ -79,51 +117,51 @@ console.log() good way to debugg and test code
       console.log(sumOfFive_Six);
 
       /*   Multiply and divide are always done first, then add and subtract (the calculation is always evaluated from left to right).
-      put parentheses round the parts that you want to be explicitly dealt with first to override.
+            put parentheses round the parts that you want to be explicitly dealt with first to override.
+            */
+
+      /*
+            Other complex assignment operators
+
+
+      += addition assignment - adds the value on the variable on the left, then returns the new variable
+      x=5
+      ex: x += 3 same as  x = x + 3;
+      value = 8;
+
+      -= subtraction assignment - subtracts the value on the variable on the left, then returns the new variable
+      x=5
+      ex: x -= 3 same as  x = x - 3;
+      value = 2;
+
+      *= multiplication assignment - multiples the variable on the left by the value on the right, and returns the new variable value.
+      x=5
+      ex: x *= 3 same as  x = x * 3;
+      value = 15;
+
+      /= division assignment - divides the variable on the left by the value on the right, and returns the new variable value.
+      x=5
+      ex: x /= 3 same as  x = x / 3;
+      value = 1.666666666667;
+
       */
 
-      /* 
-      Other complex assignment operators
+      /*
+      Comparison operators
 
+      === strict equality tests wether the left and right values are identical to one another
 
-+= addition assignment - adds the value on the variable on the left, then returns the new variable
-x=5
-ex: x += 3 same as  x = x + 3;
-value = 8;
+      !== Strict non equality  tests whether the left and right values are Not identical to one another
 
--= subtraction assignment - subtracts the value on the variable on the left, then returns the new variable
-x=5
-ex: x -= 3 same as  x = x - 3;
-value = 2;
+      < Less than tests if the left value is less than the right value
+      > greater than  tests to see if the left values is greater than the right value
+      <= Less Than or equal to  - tests whether the left value is smaller than or equal to the right value
+      >= Greater than or equal to -tests whether the left value is greater thab or equal to the right value
 
-*= multiplication assignment - multiples the variable on the left by the value on the right, and returns the new variable value.
-x=5
-ex: x *= 3 same as  x = x * 3;
-value = 15;
+      These are great boolean options, which are great for desicsion making.  two values: true and false
+      see line 10
 
-/= division assignment - divides the variable on the left by the value on the right, and returns the new variable value.
-x=5
-ex: x /= 3 same as  x = x / 3;
-value = 1.666666666667;
-
-*/
-
-      /* 
-Comparison operators 
-
-=== strict equality tests wether the left and right values are identical to one another
-
-!== Strict non equality  tests whether the left and right values are Not identical to one another
-
-< Less than tests if the left value is less than the right value
-> greater than  tests to see if the left values is greater than the right value
-<= Less Than or equal to  - tests whether the left value is smaller than or equal to the right value
->= Greater than or equal to -tests whether the left value is greater thab or equal to the right value
-
-These are great boolean options, which are great for desicsion making.  two values: true and false 
-see line 10
-
-*/
+      */
       const btn = document.querySelector("button"); /* select button */
       const msg = document.querySelector("p"); /* select p tag */
 
@@ -138,6 +176,71 @@ see line 10
         } else {
           btn.textContent = "Turn On";
           msg.textContent = "This is currently off";
+        }
+      }
+
+      /* Working with strings */
+
+      /* For strings we can use single or duble qoutes 'string' "string" both wok just fine
+
+            **Note:
+            let message = 'I've got to run'; ERROR (becuase we are using too many of the same quotes)
+
+            using a backslash will help with escaping the characters
+            let message = 'I\'ve got to run;
+
+            */
+
+      /* Concatenating string */
+      let peachFruit = "peach";
+      let appleFruit = "Apple";
+      let mixApplePeach = peachFruit + appleFruit;
+      /*  let mixApplePeach = peachFruit + " " + appleFruit;  this would add a contatentation with space between them*/
+      console.log(mixApplePeach);
+
+      /* fun message prompt */
+
+      /* here we slecet our button for the event */
+      const greetingBtn = document.querySelector(".greetings");
+
+      /* here we create our function first we get our variable for the button, than
+            we use the onclick to trigger the event, now in our function we create a variable
+            to store our message within window.promt funtion(displays a dialog with an optional message prompting the user to input some text.)
+            and an alert to sendt a message back. */
+      greetingBtn.addEventListener("click", popUpMsg);
+
+      function popUpMsg() {
+        let fruit = window.prompt("What favorite fruit?");
+        alert("Wow it's " + " " + fruit + " " + "thats pretty neat!");
+      }
+      /* how to change the typeof for a number and a string  */
+
+      let string = "100"; // string
+      let stringToNumber = Number(string); //number
+      console.log(typeof stringToNumber); //tyeof is showing it is  number
+
+      let number = 50; //number
+      let numberToString = number.toString(); //string
+      console.log(typeof numberToString); //typeof shows its a string
+
+      /* Template literals are another type of string syntax  we
+      open them with backticks ` `
+
+       When you want to include a variable or expression inside the string, 
+       you include it inside a ${ } construct, which is called a placeholder.
+      
+      */
+
+      let bye = "Lata";
+      let HBbtn = document.querySelector(".hi-bye");
+
+      HBbtn.addEventListener("click", hibye);
+
+      function hibye() {
+        if (HBbtn.textContent === "Hi") {
+          HBbtn.textContent = `${bye}`;
+        } else {
+          HBbtn.textContent = "Hi";
         }
       }
     </script>
