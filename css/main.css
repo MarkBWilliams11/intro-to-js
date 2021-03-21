@@ -21,3 +21,37 @@
   color: honeydew;
   border-radius: 50%;
 }
+
+#calendar {
+  font-size: 1.5em;
+  background: gray;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-content: center;
+  text-align: center;
+}
+#month-selection {
+  width: 30%;
+
+  margin: auto;
+}
+.month-list {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 1em;
+}
+.month-list li {
+  display: grid;
+  height: 40px;
+
+  background-color: black;
+  border: 2px solid green;
+  justify-items: center;
+  align-items: center;
+}
+.color-theme-bg {
+  height: 100%;
+  width: 100%;
+}

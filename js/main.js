@@ -438,13 +438,14 @@ log(!!null); //false
 /* Conditional branching to preform different actions based on a different condition */
 
 /* apply by creating a login using prompt */
-let adminUser = window.prompt("What is the username?");
+//let adminUser = window.prompt("What is the username?");
 
 // condition if admin value is true or false
-if (adminUser == "admin") {
+/* if (adminUser == "admin") {
   //if true then we prompt a variable adminPass to ask for password
   let adminPass = window.prompt("Whats the password? Hmmm");
   //condition to see if password is true or false
+
   if (adminPass === "pass") {
     alert("You are authorized");
   }
@@ -461,3 +462,439 @@ else if (adminUser === "" || adminUser === null) {
 } else {
   alert("This is not an authorized user");
 }
+ */
+/* Applying knowledege to make shirt size selection */
+const size_selection = document.querySelector("#size-selection");
+//Note: user selected paragraph is located outside of the selected element form
+const user_selected = document.querySelector(".user-selected");
+
+//change event for setSize funtion
+size_selection.addEventListener("change", setSize);
+
+//function for making shirt size selction
+function setSize() {
+  //using the value from the size selection options value="" to determine text we output
+  let choice = size_selection.value;
+  if (choice === "small") {
+    user_selected.textContent = "Small";
+  } else if (choice === "medium") {
+    user_selected.textContent = "Medium";
+  } else if (choice === "large") {
+    user_selected.textContent = "Large";
+  } else if (choice !== "small" || "medium" || "large") {
+    user_selected.textContent = "Please select a size";
+  } else {
+    user_selected.textContent = "";
+  }
+}
+
+/*NOTE: Any value that is not false, undefined, null, 0, NaN, or an empty string ('') 
+actually returns true when tested as a conditional statement */
+
+/* Switch statements takes a single expression and value as a input
+
+as the code is exectued from the expression or value it goes through the number of choices
+until there is a match.
+
+ex: switch(experssion or value){
+  case "choice1"// the option or value that could mtach experssion/value inside switch statement
+  
+  code you want executed
+
+  break;
+
+  //many cases are possible
+
+  case "choice2"
+  code
+
+  break;// stops executing code, and moves to code that is below switch statement
+
+
+
+defualt:
+just do this code if none if nothing matches
+
+}
+
+
+*/
+
+/* appying switch statment to sport selection */
+const sport_selection = document.querySelector("#sport-selection");
+const user_sport_selected = document.querySelector(".user-sport-selected");
+
+sport_selection.addEventListener("change", sportSelect);
+function sportSelect() {
+  let userSportChoice = sport_selection.value;
+
+  switch (userSportChoice) {
+    case "basketball":
+      user_sport_selected.textContent = "Basketball";
+
+      break;
+    case "soccer":
+      user_sport_selected.textContent = "Soccer";
+
+      break;
+    case "hockey":
+      user_sport_selected.textContent = "Hockey";
+
+      break;
+    case "tennis":
+      user_sport_selected.textContent = "Tennis";
+
+      break;
+    case "football":
+      user_sport_selected.textContent = "Football";
+
+      break;
+
+    default:
+      user_sport_selected.textContent = "No sport Selected";
+  }
+}
+
+/* Ternary operator types three areguments it is 
+a shortened way to write an if else statement  */
+
+// condition ? expression1 : expression2
+
+var age = 22;
+/* 
+function(){
+if(age>=18){
+  log("you are older than 18");
+}else{
+  log("you are older than 18");
+}
+}
+
+same as below
+ */
+
+age >= 18 ? log("you are older than 18") : log("You are younger than 18"); //you are older than 18
+
+/*  apply ternary operrator to a theme change of a background  */
+
+// id for the selection area
+const color_theme_selection = document.querySelector("#color-theme-selection");
+// slecetion html here
+const html = document.querySelector("html");
+
+// here we made a funtion the has two argumennts for the color chioce made and the text color
+
+function update(color_choice, textColor) {
+  //style or html background
+  html.style.backgroundColor = color_choice;
+  //style our html text
+  html.style.color = textColor;
+}
+
+//when we hange the options we will prform a function
+color_theme_selection.onchange = function () {
+  //condition checks if the value of the selection to check for a match
+  // then we preform the ternary operator to provide the checks in the update function
+  color_theme_selection.value === "black"
+    ? update("black", "white")
+    : update("white", "black");
+};
+
+/*applying knowledge to make a simple calander  */
+// id for the selection area
+const month_selection = document.querySelector("#month-selection");
+//class for the months title
+const month_title = document.querySelector(".month-title");
+//
+const month_list = document.querySelector(".month-list");
+
+// here we have a change function to get the value of our selections value
+month_selection.onchange = function () {
+  //here is the value of the selection
+  const month_choice = month_selection.value;
+
+  //here we need variable for our days
+  /* 
+  month = days:31 
+  month- february days:28
+  months: aprils, june september,november days:30
+  */
+  let days = 31;
+  //if the month coice if februray only 28 days
+  if (month_choice === "February") {
+    days = 28;
+  }
+  //here we select the days with only 30
+  else if (
+    month_choice === "April" ||
+    month_choice === "June" ||
+    month_choice === "September" ||
+    month_choice === "November"
+  ) {
+    days = 30;
+  }
+  // this will create our current month and days
+  createCalendar(days, month_choice);
+  //log(days, month_choice);
+};
+
+//within the same function handler we will make another funtion
+//this function will be resoponsible for displying the days and mothns
+function createCalendar(days, month_choice) {
+  month_list.innerHTML = "";
+  //displays our month choice in the h1
+  month_title.textContent = month_choice;
+
+  //loop through all the days and increment by 1
+  for (i = 1; i <= days; i++) {
+    //variable used to create a li tag in monthlis.innerhtml
+    const month_listItem = document.createElement("li");
+    //changes the li tag content to the days
+    month_listItem.textContent = i;
+    log(i);
+    //here we attach the li to the days
+    month_list.appendChild(month_listItem);
+  }
+}
+
+/* Applying switch statement to color theme change */
+
+// our select id
+const color_select = document.querySelector("#color-selection");
+//our dive class for the bg container
+const color_theme_bg = document.querySelector(".color-theme-bg");
+
+//function for our change of selection
+color_select.onchange = function () {
+  //the value of out selection
+  const color_select_choice = color_select.value;
+
+  //switch statement to use our value to determine a match for the color value and execute the code following
+  switch (color_select_choice) {
+    case "Purple":
+      update("purple", "white");
+      break;
+    case "Yellow":
+      update("yellow", "black");
+      break;
+    case "Psychedelic":
+      update("lime", "purple");
+      break;
+    case "Orange":
+      update("orange", "black");
+      break;
+  }
+};
+
+/* type conversions  */
+
+//if(condition)  <-converts results to a boolean
+/* 
+if(0){ //falsy
+...
+}
+if(1){ //truthy
+...
+}
+
+*/
+
+//0 , null, NaN, undefinded are all falsy values  otherwise all other values are truthy
+
+// if statement may contain 'else' to execute code if condition is falsy
+
+// if we need to test mutiple condition variants use " else if" (the finale 'else' is optional)
+
+/* the shortended  is the ternary operator ' ? ' 
+EX:
+
+let test = value;
+let result = condition > test  ? value1 : value2 
+
+the condition will check if values are truthy , if it matches value1 
+code will execute otherwise value2 will execute
+
+*/
+
+/* Ternary opperator with mutile conditions
+
+
+let result = condition1 ? value1 : condition2 ? value2 : condition3 ? value3 : value5;
+
+Note:this gets really complex to read if it is deep better to read code vertical than horizontal
+*/
+
+/* playing around for review */
+//let promptTest = prompt("message");
+
+/* onePlusOne === typed ? alert(type.value) : alert("nothing here"); */
+/* 
+promptTest > 5
+  ? alert("Greater than 5 ")
+  : promptTest < 10
+  ? alert("Less than 10")
+  : promptTest > 5 < 10
+  ? alert("Between 5 ")
+  : alert("between 10");
+
+
+ */
+
+/*
+  let result;
+
+  if (a + b < 4) {
+    result =" blow";
+  }
+  else{
+    result =" over";
+  }
+  
+  */
+
+// same  as above let result = ( a + b < 4) ? 'blow' : 'over';
+
+/* more training with ternary operator */
+/* 
+
+if(login == "employee"){
+  message = "hello";
+}else if(login == 'Director'){
+  message = "Greetings";
+}else if( login == ""){
+  message = "No login"
+}else{
+  message=""
+}
+
+as a ternary:
+
+let message = (login == 'employee') ? "hello" : (login == "Director") ? "Director" : (login == "") "No login" : ""; 
+
+*/
+
+/*  Reviewing switch statements
+
+switch (expression) {
+    case x://value1
+        // execute case x code block
+        break; //will stop if expression macthes
+    case y://value2
+        // execute case y code block
+        break;
+    default://fall back code if nothing matches
+        // execute default code block
+}
+*/
+// Date() function gets current day of the week
+//getDay() function to print current number that corresponds with the day of the week 1 monday ... 7 sunday
+const day = new Date().getDay();
+
+log(day); //current day
+
+switch (day) {
+  case 1:
+    log("Monday");
+    break;
+  case 2:
+    log("Tuesday");
+    break;
+  case 3:
+    log("Wednesday");
+    break;
+  case 4:
+    log("Thurday");
+    break;
+  case 5:
+    log("Friday");
+    break;
+  case 6:
+    log("Saturday");
+    break;
+  case 7:
+    log("Sunday");
+    break;
+}
+
+// Switch for a range of values
+
+/* 
+if we are looking to get a grade range 
+
+A-90 and above
+B- 89 and 80
+C- 79 and 70
+D- 69 and 60
+F - 59 and over
+
+*/
+
+const grade = 80;
+
+// here the switch statement is true and we are check every case to match the grade value;
+switch (true) {
+  case grade >= 90:
+    log("A or better");
+
+    break;
+  case grade >= 80:
+    log("B");
+
+    break;
+  case grade >= 70:
+    log("C");
+
+    break;
+  case grade >= 60:
+    log("D");
+
+    break;
+  //statement for the final range in the switch statement
+  default:
+    log("Need to study ");
+}
+
+// Multiple case for switch statement
+
+/*Date funtion gets the currennt month and getMonth funtion gets the number corresponding to 
+the month  0-11 0-january and 11-December
+
+*/
+
+// putting the month into the
+const month = new Date().getMonth();
+
+switch (month) {
+  // january, february, march
+  case 0:
+  case 1:
+  case 2:
+    log("Winter");
+    break;
+  //april, may, june
+  case 3:
+  case 4:
+  case 5:
+    log("Spring");
+    break;
+  //july,august, september
+  case 6:
+  case 7:
+  case 8:
+    log("Summer");
+    break;
+  //october,november, december
+  case 9:
+  case 10:
+  case 11:
+    log("Autumn");
+    break;
+  default:
+    log("somthing went wrong");
+}
+
+/* usefule console tips */
+
+//console.dir(element) finds all properties
+//console.clear() clears log
+//console.count(element)// keeps count of element entry
