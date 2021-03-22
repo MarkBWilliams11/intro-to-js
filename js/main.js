@@ -461,8 +461,8 @@ else if (adminUser === "" || adminUser === null) {
   alert("canceled");
 } else {
   alert("This is not an authorized user");
-}
- */
+} */
+
 /* Applying knowledege to make shirt size selection */
 const size_selection = document.querySelector("#size-selection");
 //Note: user selected paragraph is located outside of the selected element form
@@ -898,3 +898,217 @@ switch (month) {
 //console.dir(element) finds all properties
 //console.clear() clears log
 //console.count(element)// keeps count of element entry
+
+/* funtions review */
+
+/*  funtions stores code to execute a single task that uses a command to call the function.  features a - ()
+
+built-in browesr functions
+
+ex: let text = 'String';
+//replace function takes the source string stored and replaces the target string with the source string.
+      let newText = replace('String','another string');
+                              target/soruce
+      console.log(newString);
+
+      
+   
+*/
+let arrOne = ["I", "love", "pizza"];
+log(arrOne);
+//here we join all the array items into a single string
+//let arrOneJoin = arrOne.join("");
+let arrOneJoin = arrOne.join();
+log(arrOneJoin);
+
+//only after we have defined a funtion can we invoke it
+
+/* Anonymous function has no name generally uses an eventhandler to execute
+
+**will do nothinig with event handler:
+function(){
+  code to execute
+}
+
+**With eventhandler code will execute on that event:
+cost varible = document.querySelector('class/id');
+
+varible.event = funtion(){
+  codeto  execute
+}
+
+
+**Can assign a function to a varible to invoke the variable later:  variable();
+
+let varible = function(){
+  code to execute
+}
+
+  
+
+*/
+
+/* review parameters 
+note:parameters sometime referred to as arguments, properties or even attributes 
+
+paramters need a comma (argument1, argument2)
+
+*/
+
+/* function scope and conflicts
+
+when a function is made the variables inside the function and anything
+ defined inside the function  are in their own scope! 
+ and unrechable outside the function
+
+//Global scope accessiable from anywhere in the code
+ function(){
+
+ }
+*/
+
+/* applying scope knowledge to have a function output a
+
+paragraph element*/
+
+/* global scope  */
+let k = 1;
+
+function a() {
+  // scope (child)
+  let y = 2;
+  //outPutSection now has a global access to the varible y
+  outPutSection(y);
+}
+
+function b() {
+  let z = 3;
+  outPutSection(z);
+}
+
+//parent
+function outPutSection(value) {
+  //childern
+  const outputElementP = document.createElement("p");
+  document.querySelector(".output-scope").appendChild(outputElementP);
+  outputElementP.textContent = "Value:" + value;
+}
+
+// we have acces to the k varible and it prints
+outPutSection(k);
+/* outPutSection() cant access y or x varibles as a global scope becuase they are inside a() b()
+funtion. so they are locked away*/
+
+//NOTE:
+// outPutSection(y);    will not print does not have access
+
+//when we call the outPutSection function inside out funtions locale scope  we have access
+a(); //this will print y value
+b(); //this will print z value
+
+/* Function inside a function 
+
+function myFunction(){
+let vaule = someValue;
+
+subfunction1(value);
+subfunction2(value);
+subfunction3(value);
+
+}
+subfunction1(expression/value){
+  code to execute
+}
+subfunction2(expression/value){
+  code to execute
+}
+subfunction3(expression/value){
+  code to execute
+}
+
+*/
+
+/* return values are the values that are completed from the function */
+
+// more complex example outputting to html document
+//class for the input
+const number_input = document.querySelector(".number-input");
+//class for the paragraph
+const number_output = document.querySelector(".number-output");
+
+/* our three funtions with the value that will be returned */
+function squared(num) {
+  return num * num;
+}
+
+function cubed(num) {
+  return num * num * num;
+}
+
+function factorial(num) {
+  if (num < 0) return undefined;
+  if (num == 0) return 1;
+  let x = num - 1;
+  while (x > 1) {
+    num *= x;
+    x--;
+  }
+  return num;
+}
+
+// here is where we print the value for the nubmer_inputs value based on the condition
+//when we change it executes the next block of code to print the values
+number_input.onchange = function () {
+  const num = number_input.value;
+  if (isNaN(num)) {
+    number_output.textContent = "You need to enter a number!";
+  } else {
+    number_output.textContent =
+      num +
+      " squared is " +
+      squared(num) +
+      ". " +
+      num +
+      " cubed is " +
+      cubed(num) +
+      ". " +
+      num +
+      " factorial is " +
+      factorial(num) +
+      ".";
+  }
+};
+
+//function delclaration
+//Note that the animaName parameter is just the placeholder varible
+function anAnimal(animalName) {
+  log(`${animalName} ` + " is an animal");
+}
+//here we invoke -() the function and pass it the dog value
+anAnimal("dog"); // "dog is an animal"
+
+/* 
+
+some basic function names
+
+"get..."-return a value,
+"calc..."-calculate something,
+"create..."-create something,
+"check..."-check something and return a boolean,etc
+
+More examples
+
+showMessage(..) 
+getAge(..)
+calcSum(..)
+createForm(...)
+check Permission(...)
+*/
+
+/* a function can return a value, */
+function findThis(l) {
+  return l;
+}
+
+//the value is undfinded
+log(findThis());
