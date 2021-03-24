@@ -37,10 +37,3 @@ main(c)  <-we can insert a value
 
 
 */
-let capitalize = () => {
-  let str = "abcd";
-  let showLast = str[3];
-  return showLast;
-};
-
-log(capitalize());
