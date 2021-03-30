@@ -40,11 +40,13 @@ END game after five rounds
 
 //Generate random anser for computer choice
 function computerGen() {
-  computerChoice = ["rock", "paper", "scissors"];
-  return computerChoice[Math.floor(Math.random() * computerChoice.length)];
+  computerSelection = ["rock", "paper", "scissors"];
+  return computerSelection[
+    Math.floor(Math.random() * computerSelection.length)
+  ];
 }
 
-//prompt for user
+//prompt for user input answer
 let userSelection = "rock"; //prompt("rock,paper,scissors?");
 
 //user answer to lowercase for case sensitivity
@@ -53,27 +55,30 @@ let playerAnswer = userSelection.toLowerCase();
 let computerAnswer = computerGen();
 
 function playRound(playerAnswer, computerAnswer) {
-  if (playerAnswer == computerAnswer) {
-    return `It's a draw Score: score: Score:${playerScore}  ${computerScore} `;
+  if (playerAnswer === computerAnswer) {
+    return `It's a draw  Score:${playerScore}  ${computerScore} `;
   } else if (playerAnswer == "rock" && computerAnswer == "scissors") {
-    playerScore++;
-    return `Player Wins! ${playerAnswer} beats ${computerAnswer} Score:${playerScore}  ${computerScore} `;
+    playerScore = playerScore + 1;
+    return `Player Wins! ${playerAnswer} beats ${computerAnswer} Player:${playerScore} Computer:${computerScore} `;
   } else if (playerAnswer == "scissors" && computerAnswer == "paper") {
-    playerScore++;
-    return `Player Wins! ${playerAnswer} beats ${computerAnswer} Score:${playerScore}  ${computerScore} `;
+    playerScore = playerScore + 1;
+    return `Player Wins! ${playerAnswer} beats ${computerAnswer} Player:${playerScore} Computer:${computerScore} `;
   } else if (playerAnswer == "paper" && computerAnswer == "rock") {
-    playerScore + 1;
-    return `Player Wins! ${playerAnswer} beats ${computerAnswer} Score:${playerScore}  ${computerScore} `;
+    playerScore = playerScore + 1;
+    return `Player Wins! ${playerAnswer} beats ${computerAnswer} Player:${playerScore} Computer:${computerScore} `;
   } else {
-    computerScore += 1;
-    return `computer Wins! ${computerAnswer} beats ${playerAnswer} Score:${playerScore}  ${computerScore}`;
+    computerScore = computerScore + 1;
+    return `computer Wins! ${computerAnswer} beats ${playerAnswer} Player:${playerScore} Computer:${computerScore}`;
   }
 }
 
 let playerScore = 0;
 let computerScore = 0;
+
 //function for game
 function game() {
-  log(playRound(playerAnswer, computerAnswer));
+  for (i = 0; i < 5; i++) {
+    log(playRound(playerAnswer, computerAnswer));
+  }
 }
 game();
