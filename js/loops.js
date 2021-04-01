@@ -130,11 +130,26 @@ do {
 
 /* playing with loops */
 let countdown = 10;
-while (countdown > -1) {
+while (countdown >= 0) {
   if (countdown === 10) {
-    log("Countdown 10");
+    log(`Countdown ${countdown}`);
   } else if (countdown === 0) {
-    log(`Blastoff`);
+    log(`Blastoff ${countdown}`);
   }
   log(countdown--);
+}
+
+/* playing with guest list */
+let guestList = ["jamie", "gino", "lisa", "phil", "penny", "bobby", "lola"];
+
+const guestAdmit = document.querySelector(".admit");
+const guestRefuse = document.querySelector(".refuse");
+guestRefuse.textContent = `Refuse: `;
+guestAdmit.textContent = `Admit: `;
+for (i = 0; i < guestList.length; i++) {
+  if (guestList[i] == "phil" || guestList[i] == "lola") {
+    guestRefuse.textContent += ` ${guestList[i]} `;
+  } else {
+    guestAdmit.textContent += ` ${guestList[i]} `;
+  }
 }
