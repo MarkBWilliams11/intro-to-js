@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="js/dom.js" defer></script>
+    <title>Document Object Model</title>
+  </head>
+  <body>
+    <!-- a tree-like representation of web page content  -->
+    <!-- this section is an example of a DOM-->
+    <!-- EXAMPLE -->
+    <section>
+      <!-- parent container -->
+      <div id="container">
+        <!-- childern - they're siblings within the parent container -->
+        <div class="display"></div>
+        <div class="controls"></div>
+      </div>
+      <!-- 
+When working with DOM elements we can use css-style selectors and relationship
+properties to target nodes
+
+ex: if we want to target the div with classs of display 
+
+selectors: 
+- div.display
+- .display
+- #container>.display
+- div#container>div.display
+
+other
+firstElementChild or lastElementchild .... -->
+    </section>
+
+    <!-- see appying line 120 dom.js -->
+    <section>
+        <h1>DOM manipultation</h1>
+        <div id="containerContent"></div>
+    </section>
+
+    <!-- see line 187 for applying -->
+<br>
+<!--  here we have the first method applying the event on the inside of the html
+not ideal clutters html -->
+    <button onclick="alert('Method 1 using  inner html ')">Click Me</button>
+<br>
+<!-- here we have the second method -->
+<button class="btn">Click Here</button>
+<br>
+
+<!-- here we have the second method -->
+<button id="btn">Click This</button>
+<br>
+
+<!--  -->
+<section>
+<div id="nodeGroup">
+  <button id="1">Click Here</button>
+  <button id="2">Click Here</button>
+  <button id="3">Click Here</button>
+</div>
+
+</section>
+</html>
