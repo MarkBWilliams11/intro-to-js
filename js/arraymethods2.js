@@ -513,3 +513,63 @@ console.log(
     (currentValue, index, array) => currentValue + index + array.length
   ) // [5, 7, , 10]
 );
+
+/* 
+the some() method tests wether at least one element in the array
+passes the test implemented by the provided function. the element 
+returns true if some() array finds an element for which the provided function
+returns true;
+
+Note: it does not modify the array
+
+syntax: array.some(callback(element,index,array),thisarg)
+
+callback function - a function test for each element, taking three arguments
+element- current element being processed in the array
+
+optional:
+index- the index of the current element being processed in the array
+array- the array some() called upon
+thisarg- a value to use as this when exectuing callback
+
+return truthy value
+
+Note: calling this method on an empty array returns false for any condition
+*/
+// numbas = [-5, 3, 6, 8, 0];
+//checking if an even number
+const even = (element) => element % 2 === 0;
+console.log(numbas.some(even)); //output is true
+
+/* using some to test value of array elements */
+//checking if any nubmer large than 20
+console.log(numbas.some((element) => element > 20));
+
+/*  checking if something exist in the array */
+function checkItemAvailability(arr, val) {
+  return arr.some(function (arrVal) {
+    return val === arrVal;
+  });
+}
+
+console.log(checkItemAvailability(numbas, 3)); //true
+
+/* Converting any value to boolean */
+
+const TRUTHY_VALUES = [true, "true", 1];
+
+function getBoolean(value) {
+  "use strict";
+
+  if (typeof value === "string") {
+    value = value.toLowerCase().trim();
+  }
+  return TRUTHY_VALUES.some(function (t) {
+    return t == value;
+  });
+}
+
+console.log(getBoolean(false)); //false
+console.log(getBoolean("false")); //false
+console.log(getBoolean(1)); //true
+console.log(getBoolean("true")); //true

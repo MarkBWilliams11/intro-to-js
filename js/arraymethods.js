@@ -139,3 +139,34 @@ comma sperated string whena primitive value is expected
 all javascript objects have a toString() method
 
 */
+
+/* using replace() method 
+returns a new string with some or all mataces of a pattern replaced by a replacement
+
+syntax:
+const newStr = str.replace(regex or substring, newStr or function)
+
+regex(pattern)- a Regex object  or literal  The matches are  replaced  with  newSubStr or the value
+returned  by the specified function
+
+subString- a String that is to be replaced by newSubStr. it is treated as a literal string and is not interpreted as
+a regular expression. only the first occerence will be replaced.
+
+newSubString(replacement)- the string that replaces the substring spefified by the reg or substr parameter
+
+
+function (replacement) - a function to be invoked to create the new substring to be used to replace the matches to the given 
+regex or substr. 
+
+Note: Does not change the called string!
+*/
+
+let longStr = `This is a really long string to test out some informtion`;
+//replaces This with Thus
+console.log(longStr.replace("This", "Thus"));
+
+const regex = /Long/i;
+//replaces long with short
+console.log(longStr.replace(regex, "short"));
+
+/* Regular Expressions */
