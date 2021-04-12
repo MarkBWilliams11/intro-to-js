@@ -94,7 +94,7 @@ function promptTest() {
   would return undefined
 
   */
-  alert(user.bike === undefined); // true cause bike proper value does not exist
+  alert(user.bike === undefined); // true cause bike property value does not exist
 
   /* using in operator to check if property exist  
   (preferred way to test check against all values null,empty,unknown...)
@@ -153,7 +153,7 @@ function promptTest() {
   alert(String(Math.trunc(Number("+49")))); //'49, not same,+49 is not integer property
   alert(String(Math.trunc(Number("1.2")))); //'1, not same,1.2 is not integer property
 
-  //non-integer willl get us the custom result we want
+  //non-integer will get us the custom result we want
   let codesCustomOrder = {
     "+49": "Germany",
     "+41": "Switerland",
